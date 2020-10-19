@@ -1,0 +1,11 @@
+{
+    "apiKey": "",
+    "stocks":[
+        "AAPL",
+        "FSLY",
+        "AMZN",
+        "ACN",
+        "ETSY",
+        "BABA"
+    ]
+}
