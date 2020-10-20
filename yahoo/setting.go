@@ -1,4 +1,4 @@
-package finnhub
+package yahoo
 
 import (
 	"encoding/json"
@@ -6,14 +6,9 @@ import (
 	"os"
 )
 
-// Settings defines the configuration properties for this module
-type Settings struct {
-	apiKey  string   `help:"Your finnhub API token."`
-	symbols []string `help:"An array of stocks symbols (i.e. AAPL, MSFT)"`
-}
 
 // NewSettingFromConfig - get the widgets setting from config.json
-func NewSettingFromConfig() *Settings {
+func NewSettingFromConfig() *Config {
 	path, exists := os.LookupEnv("finnhub_config_path")
 	if !exists {
 		path = "config.json"
@@ -30,10 +25,5 @@ func NewSettingFromConfig() *Settings {
 		fmt.Println(err)
 	}
 
-	setting := Settings{
-		apiKey:  c.APIKey,
-		symbols: c.Stocks,
-	}
-
-	return &setting
+	return &c
 }

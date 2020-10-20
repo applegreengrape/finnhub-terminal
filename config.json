@@ -1,11 +1,25 @@
 {
-    "apiKey": "",
     "stocks":[
-        "AAPL",
-        "FSLY",
-        "AMZN",
         "ACN",
-        "ETSY",
-        "BABA"
+        "AMZN",
+        "AAPL",
+        "FB",
+        "MSFT",
+        "FSLY",
+        "UBER",
+        "GOOGL",
+        "BILI"
+    ],
+    "enable_views":[
+        {
+            "widget": "stock_price",
+            "interval": 15,
+            "widget_rect" : {
+                "top": 0,
+                "left":0,
+                "width":100,
+                "heigt":10
+            }
+        }
     ]
 }
