@@ -1,11 +1,12 @@
 {
     "apiKey": "",
-    "stocks":[
+    "stocks": [
         "AAPL",
         "FSLY",
         "AMZN",
         "ACN",
         "ETSY",
-        "BABA"
+        "BABA",
+        "VMW"
     ]
 }
