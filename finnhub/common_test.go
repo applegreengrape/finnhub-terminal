@@ -1,11 +1,13 @@
 package finnhub
 
 import (
+	"os"
 	"fmt"
 	"testing"
 )
 
 func TestFinnhubClient(t *testing.T) {
+	os.Setenv("finnhub_config_path", "../default_config.json")
 	s:= NewSettingFromConfig()
 
 	testClient := &Client{

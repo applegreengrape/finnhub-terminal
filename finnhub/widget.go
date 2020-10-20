@@ -10,7 +10,7 @@ func ListQuotes() (list *widgets.List){
 	l := widgets.NewList()
 	l.Title = "Stock Price"
 	s:= NewSettingFromConfig()
-
+	
 	c := &Client{
 		symbols: s.symbols,
 		apiKey: s.apiKey,

@@ -1,0 +1,22 @@
+{
+    "stocks":[
+        "AAPL",
+        "FSLY",
+        "AMZN",
+        "ACN",
+        "ETSY",
+        "BABA"
+    ],
+    "enable_views":[
+        {
+            "widget": "quote",
+            "interval": 5,
+            "widget_rect" : {
+                "top": 0,
+                "left":0,
+                "width":50,
+                "heigt":10
+            }
+        }
+    ]
+}

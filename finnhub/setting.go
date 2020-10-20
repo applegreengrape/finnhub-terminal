@@ -16,7 +16,7 @@ type Settings struct {
 func NewSettingFromConfig() *Settings {
 	path, exists := os.LookupEnv("finnhub_config_path")
 	if !exists {
-		path = "config.json"
+		path = "default_config.json"
 	}
 
 	config, err := os.Open(path)
