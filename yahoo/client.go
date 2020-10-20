@@ -32,10 +32,11 @@ func (client *Client) GetPrice() ([]StockPrice, error) {
 /* -------------------- Unexported Functions -------------------- */
 
 var (
-	finnhubURL = &url.URL{Scheme: "https", Host: "query1.finance.yahoo.com", Path: "/v8/finance/chart/"}
+	yahooURL = &url.URL{Scheme: "https", Host: "query1.finance.yahoo.com", Path: "/v8/finance/chart/"}
 )
 
 var proxyServers = []string{
+	"192.168.1.1:1080",
 	"103.52.211.186:1080",
 	"176.9.75.42:1080",
 	"207.154.231.213:1080",
@@ -53,7 +54,7 @@ func (client *Client) yahooRequest(symbol string) (*http.Response, error) {
 	params.Add("interval", "1d")
 	params.Add("period", "1d")
 
-	url := finnhubURL.ResolveReference(&url.URL{Path: symbol, RawQuery: params.Encode()})
+	url := yahooURL.ResolveReference(&url.URL{Path: symbol, RawQuery: params.Encode()})
 
 	req, err := http.NewRequest("GET", url.String(), nil)
 	req.Header.Add("Accept", "application/json")
@@ -63,7 +64,7 @@ func (client *Client) yahooRequest(symbol string) (*http.Response, error) {
 	}
 
 	rand.Seed(86)
-	n := rand.Intn(10)
+	n := rand.Intn(len(proxyServers))
 	proxyURL, err := url.Parse(proxyServers[n])
 	httpClient := &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(proxyURL)}}
 	resp, err := httpClient.Do(req)

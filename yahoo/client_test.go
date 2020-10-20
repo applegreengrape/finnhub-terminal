@@ -7,7 +7,7 @@ import (
 )
 
 func TestFinnhubClient(t *testing.T) {
-	os.Setenv("finnhub_config_path", "../config.json")
+	os.Setenv("finnhub_config_path", "../config.sample.json")
 	s := NewSettingFromConfig()
 
 	testClient := &Client{
