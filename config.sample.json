@@ -1,12 +1,13 @@
 {
-    "apiKey": "",
-    "stocks": [
-        "AAPL",
-        "FSLY",
+    "stocks":[
         "AMZN",
-        "ACN",
-        "ETSY",
-        "BABA",
-        "VMW"
+        "AAPL",
+        "MSFT",
+        "FSLY",
+        "UBER",
+        "GOOGL",
+        "BILI",
+        "TWLO",
+        "BABA"
     ]
 }
