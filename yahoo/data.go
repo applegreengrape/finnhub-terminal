@@ -1,23 +1,8 @@
 package yahoo
 
-// Client ..
-type Client struct {
-	symbols []string
-}
-
 // Config ..
 type Config struct {
 	Stocks []string `json:"stocks"`
-	EnableViews []struct {
-		Widget     string `json:"widget"`
-		Interval   int    `json:"interval"`
-		WidgetRect struct {
-			Top   int `json:"top"`
-			Left  int `json:"left"`
-			Width int `json:"width"`
-			Heigt int `json:"heigt"`
-		} `json:"widget_rect"`
-	} `json:"enable_views"`
 }
 
 // YahooResp ..
@@ -30,7 +15,7 @@ type YahooResp struct {
 				ExchangeName         string  `json:"exchangeName"`
 				InstrumentType       string  `json:"instrumentType"`
 				FirstTradeDate       int     `json:"firstTradeDate"`
-				RegularMarketTime    int     `json:"regularMarketTime"`
+				RegularMarketTime    int64   `json:"regularMarketTime"`
 				Gmtoffset            int     `json:"gmtoffset"`
 				Timezone             string  `json:"timezone"`
 				ExchangeTimezoneName string  `json:"exchangeTimezoneName"`

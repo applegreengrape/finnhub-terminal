@@ -3,19 +3,45 @@ package yahoo
 import (
 	"encoding/json"
 	"fmt"
-	"math/rand"
+	//"math/rand"
 	"net/http"
 	"net/url"
 )
 
-// GetPrice ..
-func (client *Client) GetPrice() ([]StockPrice, error) {
+// GetCurrentPrice ..
+func GetCurrentPrice() (s []string) {
+	cfg := NewSettingFromConfig()
+
+	r, err := cfg.getPrice()
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	stkPrice := []string{
+		"#, stock, current price\n",
+	}
+
+	for idx, stk := range r {
+		s := fmt.Sprintf("[%d], %s, %.2f\n", idx, stk.stock, stk.price)
+		stkPrice = append(stkPrice, s)
+	}
+
+	return stkPrice
+
+}
+
+/* -------------------- Unexported Functions -------------------- */
+var (
+	yahooURL = &url.URL{Scheme: "https", Host: "query1.finance.yahoo.com", Path: "/v8/finance/chart/"}
+)
+
+func (cfg *Config) getPrice() ([]StockPrice, error) {
 	quotes := []StockPrice{}
 
-	for _, s := range client.symbols {
-		resp, err := client.yahooRequest(s)
+	for _, s := range cfg.Stocks {
+		resp, err := cfg.yahooRequest(s)
 		if err != nil {
-			return quotes, err
+			return nil, err
 		}
 
 		var res YahooResp
@@ -29,14 +55,7 @@ func (client *Client) GetPrice() ([]StockPrice, error) {
 	return quotes, nil
 }
 
-/* -------------------- Unexported Functions -------------------- */
-
-var (
-	yahooURL = &url.URL{Scheme: "https", Host: "query1.finance.yahoo.com", Path: "/v8/finance/chart/"}
-)
-
 var proxyServers = []string{
-	"192.168.1.1:1080",
 	"103.52.211.186:1080",
 	"176.9.75.42:1080",
 	"207.154.231.213:1080",
@@ -46,10 +65,9 @@ var proxyServers = []string{
 	"138.197.157.32:8080",
 	"181.129.51.147:47562",
 	"90.181.150.211:4145",
-	"",
 }
 
-func (client *Client) yahooRequest(symbol string) (*http.Response, error) {
+func (cfg *Config) yahooRequest(symbol string) (*http.Response, error) {
 	params := url.Values{}
 	params.Add("interval", "1d")
 	params.Add("period", "1d")
@@ -63,10 +81,11 @@ func (client *Client) yahooRequest(symbol string) (*http.Response, error) {
 		return nil, err
 	}
 
-	rand.Seed(86)
-	n := rand.Intn(len(proxyServers))
-	proxyURL, err := url.Parse(proxyServers[n])
-	httpClient := &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(proxyURL)}}
+	//rand.Seed(86)
+	//n := rand.Intn(len(proxyServers))
+	//proxyURL, err := url.Parse(proxyServers[n])
+	///httpClient := &http.Client{Transport: &http.Transport{Proxy: http.ProxyURL(proxyURL)}}
+	httpClient := &http.Client{}
 	resp, err := httpClient.Do(req)
 	if err != nil {
 		return nil, err
