@@ -1,6 +1,8 @@
 github.com/DATA-DOG/go-sqlmock v1.3.3/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
-github.com/applegreengrape/finnhub-terminal v0.0.0-20201021230212-76bc22a063d3 h1:ZYxHtsz7AZe8q8lo24r7W20cMivR+R4x1AGUiDmxyW0=
-github.com/applegreengrape/finnhub-terminal v0.0.0-20201022162204-567869bbc598 h1:Ycvxgb8cAvR3cyFSUb9ufa5M8kFwk6MVOozu5Wkp+JM=
+github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201022162204-567869bbc598 h1:/pJsDOESHgolgNK01TGLAOMZe02kR3JA58QgdAAi1qI=
+github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201022162204-567869bbc598/go.mod h1:ZM/IFd73SMw0f8nTUghjoUsxPftzAMaDrore+mbVyqA=
+github.com/applegreengrape/finnhub-terminal/widgets v0.0.0-20201022162204-567869bbc598 h1:IR/9j9ZFIXtovwPuNWRkJmS11tckpRJwMlTktUeDTMU=
+github.com/applegreengrape/finnhub-terminal/widgets v0.0.0-20201022162204-567869bbc598/go.mod h1:Vf1BbTTvyCD+0Cj/AERydtmad36MqV1HOxsHLb/5Sh0=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201022162204-567869bbc598 h1:a3OUPlgNVk6ycUIgXHjVCVskOJ29y4a9WBHwLUU/JMM=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201022162204-567869bbc598/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
 github.com/gdamore/encoding v1.0.0/go.mod h1:alR0ol34c49FCSBLjhosxzcPHQbf2trDkoo5dl+VrEg=
@@ -13,6 +15,7 @@ github.com/mattn/go-runewidth v0.0.9 h1:Lm995f3rfxdpd6TSmuVCHVb/QhupuXlYr8sCI/Qd
 github.com/mattn/go-runewidth v0.0.9/go.mod h1:H031xJmbD/WCDINGzjvQ9THkh0rPKHF+m2gUSrubnMI=
 github.com/mum4k/termdash v0.12.2 h1:S2frz71OrXUKIVVZ3snYBEzyYlUNRTu0ElV6d5Pf6gI=
 github.com/mum4k/termdash v0.12.2/go.mod h1:haerPCSO0U8pehROAecmuOHDF+2UXw2KaCTxdWooDFE=
+github.com/nsf/termbox-go v0.0.0-20200204031403-4d2b513ad8be h1:yzmWtPyxEUIKdZg4RcPq64MfS8NA6A5fNOJgYhpR9EQ=
 github.com/nsf/termbox-go v0.0.0-20200204031403-4d2b513ad8be/go.mod h1:IuKpRQcYE1Tfu+oAQqaLisqDeXgjyyltCfsaoYN18NQ=
 golang.org/x/sys v0.0.0-20190626150813-e07cf5db2756/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
