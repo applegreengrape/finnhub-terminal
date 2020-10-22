@@ -8,17 +8,15 @@ import (
 
 // Config ..
 type Config struct {
-	IgAccountID   string `json:"ig_account_id"`
-	AuthBearerTok string `json:"auth_bearer_tok"`
-	IgAPIKey      string `json:"ig_api_key"`
-	FinnhubAPIKey string `json:"finnhub_api_key"`
+	APIKey string   `json:"apiKey"`
+	Stocks []string `json:"stocks"`
 }
 
 // NewSettingFromConfig - get the widgets setting from config.json
 func NewSettingFromConfig() *Config {
-	path, exists := os.LookupEnv("secret_json_path")
+	path, exists := os.LookupEnv("finnhub_terminal_config")
 	if !exists {
-		path = "secret.json"
+		path = "../config.json"
 	}
 
 	config, err := os.Open(path)

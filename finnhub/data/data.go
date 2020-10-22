@@ -1,4 +1,4 @@
-package finnhub
+package data
 
 // News ..
 type News []struct {

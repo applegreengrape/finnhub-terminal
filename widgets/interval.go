@@ -9,5 +9,9 @@ const (
 )
 
 const (
-	interval = 3 * time.Second
+	interval = 1 * time.Second
+)
+
+const (
+	newsInterval = 5 * time.Second
 )

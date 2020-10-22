@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/applegreengrape/fintech-terminal/yahoo"
+	"github.com/applegreengrape/finnhub-terminal/yahoo"
 	"github.com/mum4k/termdash/widgets/text"
 )
 
