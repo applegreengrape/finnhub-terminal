@@ -49,6 +49,8 @@ func CompanyNews() ([]string, error) {
 			}
 			companyNewsList = append(companyNewsList, "\n")
 		}
+
+		time.Sleep(1 * time.Second)
 	}
 
 	return companyNewsList, nil

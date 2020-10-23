@@ -2,14 +2,14 @@ package client
 
 import (
 	"fmt"
+	"github.com/applegreengrape/finnhub-terminal/finnhub"
 	"net/http"
 	"net/url"
-	"github.com/applegreengrape/finnhub-terminal/finnhub"
 )
 
 // base url and version for finnhub api
 var (
-	baseURL = &url.URL{Scheme: "https", Host: finnhub.BaseURL,}
+	baseURL = &url.URL{Scheme: "https", Host: finnhub.BaseURL}
 )
 
 // Client ..
@@ -20,7 +20,7 @@ type Client struct {
 // FinnhubClient Client
 func (c *Client) FinnhubClient(path string, params url.Values) (*http.Response, error) {
 	params.Add("token", c.APIKey)
-	
+
 	url := baseURL.ResolveReference(&url.URL{Path: path, RawQuery: params.Encode()})
 	req, err := http.NewRequest("GET", url.String(), nil)
 	if err != nil {

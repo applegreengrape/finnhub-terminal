@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"time"
-	
+
 	"github.com/applegreengrape/finnhub-terminal/finnhub/data"
 	"github.com/mum4k/termdash/widgets/text"
 )
@@ -18,7 +18,7 @@ func RollingNews(ctx context.Context, t *text.Text) {
 		select {
 		case <-ticker.C:
 			news, err := data.MarketNews()
-			if err != nil{
+			if err != nil {
 				panic(err)
 			}
 			for _, n := range news {

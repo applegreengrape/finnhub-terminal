@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"time"
-	
+
 	"github.com/applegreengrape/finnhub-terminal/finnhub/data"
 	"github.com/mum4k/termdash/widgets/text"
 )

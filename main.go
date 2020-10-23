@@ -29,6 +29,13 @@ func main() {
 	// new ctx sessions
 	ctx, cancel := context.WithCancel(context.Background())
 
+	// update time
+	timeNow, err := text.New()
+	if err != nil {
+		panic(err)
+	}
+	go widgets.UpdateStockPrice(ctx, timeNow)
+
 	// update stocks
 	stk, err := text.New()
 	if err != nil {
@@ -83,56 +90,28 @@ func main() {
 			container.Left(
 				container.SplitHorizontal(
 					container.Top(
-						container.SplitVertical(
-							container.Left(
+						container.SplitHorizontal(
+							container.Top(
 								container.SplitHorizontal(
 									container.Top(
+										container.PlaceWidget(timeNow),
+									),
+									container.Bottom(
 										container.Border(linestyle.Light),
 										container.BorderTitle("📈 stock prices by yahoo finance "),
 										container.PlaceWidget(stk),
 									),
-									container.Bottom(
-										container.SplitHorizontal(
-											container.Top(
-												container.Border(linestyle.Light),
-												container.BorderTitle(fmt.Sprintf("%s stock price by yahoo finance", cfg.Stocks[0])),
-												container.PlaceWidget(lc),
-											),
-											container.Bottom(
-												container.PlaceWidget(volchart),
-											),
-											container.SplitPercent(70),
-										),
-									),
+									container.SplitPercent(10),
 								),
 							),
-							container.Right(),
+							container.Bottom(),
 						),
 					),
 					container.Bottom(),
 				),
 			),
-			container.Right(
-				container.SplitHorizontal(
-					container.Top(),
-					container.Bottom(
-						container.SplitHorizontal(
-							container.Top(
-								container.Border(linestyle.Light),
-								container.BorderTitle("📨 company news by finnhub.io "),
-								container.PlaceWidget(companyNewsRoll),
-							),
-							container.Bottom(
-								container.Border(linestyle.Light),
-								container.BorderTitle("💬 market news by finnhub.io "),
-								container.PlaceWidget(rolled),
-							),
-							container.SplitPercent(50),
-						),
-					),
-					container.SplitPercent(30),
-				),
-			),
+			container.Right(),
+			container.SplitPercent(40),
 		),
 	)
 	if err != nil {
