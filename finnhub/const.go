@@ -5,5 +5,5 @@ const (
 	BaseURL = "finnhub.io"
 
 	// Version ..
-	Version = "/api/v1/"
+	Version = "/api/v1"
 )
