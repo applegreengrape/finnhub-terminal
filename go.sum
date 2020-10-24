@@ -1,8 +1,12 @@
 github.com/DATA-DOG/go-sqlmock v1.3.3/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
 github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201022162204-567869bbc598 h1:/pJsDOESHgolgNK01TGLAOMZe02kR3JA58QgdAAi1qI=
 github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201022162204-567869bbc598/go.mod h1:ZM/IFd73SMw0f8nTUghjoUsxPftzAMaDrore+mbVyqA=
+github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201022224320-74d3c93a3a14 h1:1ABLAuqlBg/5qc7OipqCEGtE481nVGN6OfAafwAvVu4=
+github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201022224320-74d3c93a3a14/go.mod h1:ZM/IFd73SMw0f8nTUghjoUsxPftzAMaDrore+mbVyqA=
 github.com/applegreengrape/finnhub-terminal/widgets v0.0.0-20201022162204-567869bbc598 h1:IR/9j9ZFIXtovwPuNWRkJmS11tckpRJwMlTktUeDTMU=
 github.com/applegreengrape/finnhub-terminal/widgets v0.0.0-20201022162204-567869bbc598/go.mod h1:Vf1BbTTvyCD+0Cj/AERydtmad36MqV1HOxsHLb/5Sh0=
+github.com/applegreengrape/finnhub-terminal/widgets v0.0.0-20201023173905-bc79b24e54bd h1:TmdL/IduOBJ0hX24QbQ3BTSbZ3hpoELcarLg4Z16E7A=
+github.com/applegreengrape/finnhub-terminal/widgets v0.0.0-20201023173905-bc79b24e54bd/go.mod h1:zqBed3UKk2fkAEJjNzAEUsr+VGziQcx0r5L34iPBLl0=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201022162204-567869bbc598 h1:a3OUPlgNVk6ycUIgXHjVCVskOJ29y4a9WBHwLUU/JMM=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201022162204-567869bbc598/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
 github.com/gdamore/encoding v1.0.0/go.mod h1:alR0ol34c49FCSBLjhosxzcPHQbf2trDkoo5dl+VrEg=

@@ -34,7 +34,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	go widgets.UpdateStockPrice(ctx, timeNow)
+	go widgets.UpdateTime(ctx, timeNow)
 
 	// update stocks
 	stk, err := text.New()
@@ -44,11 +44,11 @@ func main() {
 	go widgets.UpdateStockPrice(ctx, stk)
 
 	// RollingMtkNews Widgest
-	rolled, err := text.New(text.RollContent(), text.WrapAtWords())
+	news, err := text.New(text.RollContent(), text.WrapAtWords())
 	if err != nil {
 		panic(err)
 	}
-	go widgets.RollingNews(ctx, rolled)
+	go widgets.RollingNews(ctx, news)
 
 	//RollingCompanyNews Widgest
 	companyNewsRoll, err := text.New(text.RollContent(), text.WrapAtWords())
@@ -85,33 +85,72 @@ func main() {
 	c, err := container.New(
 		t,
 		container.Border(linestyle.Light),
-		container.BorderTitle("PRESS Q TO QUIT"),
+		container.BorderTitle("👋 PRESS Q TO QUIT"),
 		container.SplitVertical(
 			container.Left(
 				container.SplitHorizontal(
 					container.Top(
 						container.SplitHorizontal(
 							container.Top(
+								container.PlaceWidget(timeNow),
+							),
+							container.Bottom(
 								container.SplitHorizontal(
 									container.Top(
-										container.PlaceWidget(timeNow),
-									),
-									container.Bottom(
 										container.Border(linestyle.Light),
 										container.BorderTitle("📈 stock prices by yahoo finance "),
 										container.PlaceWidget(stk),
 									),
-									container.SplitPercent(10),
+									container.Bottom(
+										container.SplitHorizontal(
+											container.Top(
+												container.Border(linestyle.Light),
+												container.BorderTitle(fmt.Sprintf("%s stock price by yahoo finance", cfg.Stocks[0])),
+												container.PlaceWidget(lc),
+											),
+											container.Bottom(
+												//container.BorderTitle(fmt.Sprintf("%s stock price by yahoo finance", cfg.Stocks[0])),
+												container.PlaceWidget(volchart),
+											),
+											container.SplitPercent(70),
+										),
+									),
+									container.SplitPercent(30),
 								),
 							),
-							container.Bottom(),
+							container.SplitPercent(5),
 						),
 					),
-					container.Bottom(),
+					container.Bottom(
+						container.SplitHorizontal(
+							container.Top(
+								container.Border(linestyle.Light),
+								container.BorderTitle("earning calendars"),
+							),
+							container.Bottom(
+								container.SplitHorizontal(
+									container.Top(
+										container.Border(linestyle.Light),
+										container.BorderTitle("📨 company news by finnhub.io "),
+										container.PlaceWidget(companyNewsRoll),
+									),
+									container.Bottom(
+										container.Border(linestyle.Light),
+										container.BorderTitle("💬 market news by finnhub.io "),
+										container.PlaceWidget(news),
+									),
+								),
+							),
+							container.SplitPercent(30),
+						),
+					),
+					container.SplitPercent(45),
 				),
 			),
-			container.Right(),
-			container.SplitPercent(40),
+			container.Right(
+				container.Border(linestyle.Light),
+			),
+			container.SplitPercent(35),
 		),
 	)
 	if err != nil {
