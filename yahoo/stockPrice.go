@@ -18,7 +18,7 @@ func GetCurrentPrice() (s []string) {
 	}
 
 	stkPrice := []string{
-		"#, stock, current price\n",
+		"\n",
 	}
 
 	for idx, stk := range r {

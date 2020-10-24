@@ -11,18 +11,21 @@ import (
 func TestCompanyNews(t *testing.T) {
 	os.Setenv("finnhub_terminal_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 
-	n, err := CompanyNews()
+	n, p, err := CompanyNews()
 	if err == nil {
-		fmt.Println(n)
+		fmt.Println(p)
+		for _, l := range n {
+			fmt.Println(l)
+		}
 	}
 }
 
 func TestMarketNews(t *testing.T) {
 	os.Setenv("finnhub_terminal_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 
-	n, err := MarketNews()
+	n, p, err := MarketNews()
 	if err == nil {
-		fmt.Println(n)
+		fmt.Println(n, p)
 	}
 }
 
@@ -45,4 +48,18 @@ func TestGetBasicFinancials(t *testing.T) {
 	table.SetHeader(header)
 	table.AppendBulk(data)                          
 	table.Render()
+}
+
+
+func TestGetEarningsCals(t *testing.T) {
+	os.Setenv("finnhub_terminal_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+
+	cals, p, err := GetEarningsCals()
+	if err == nil {
+		fmt.Println(p)
+
+		for _, c := range cals {
+			fmt.Println(c)
+		}
+	}
 }

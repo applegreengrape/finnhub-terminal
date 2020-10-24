@@ -9,20 +9,20 @@ import (
 	"github.com/mum4k/termdash/widgets/text"
 )
 
-// RollingCompanyNews ..
-func RollingCompanyNews(ctx context.Context, t *text.Text) {
+// RollingEarningsCalendar ..
+func RollingEarningsCalendar(ctx context.Context, t *text.Text) {
 	ticker := time.NewTicker(finnhubInit)
 	defer ticker.Stop()
 
 	for {
 		select {
 		case <-ticker.C:
-			companyNews, pause, err := data.CompanyNews()
+			cals, pause, err := data.GetEarningsCals()
 			if err != nil {
 				panic(err)
 			}
-			for _, n := range companyNews {
-				if err := t.Write(fmt.Sprintf("%s", n)); err != nil {
+			for _, cal := range cals {
+				if err := t.Write(fmt.Sprintf("%s", cal)); err != nil {
 					panic(err)
 				}
 			}
