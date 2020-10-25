@@ -37,7 +37,7 @@ func GetEarningsCals() (cals []string, pause bool, e error) {
 		json.NewDecoder(res.Body).Decode(&earningcals)
 
 		if len(earningcals.EarningsCalendar) == 0 {
-			str := fmt.Sprintf(" 🤷‍♀️ no earning calendar info for %s from %s to %s. \n\n", s, from, to)
+			str := fmt.Sprintf("🈳 no earning calendar info for %s from %s to %s. \n\n", s, from, to)
 			cals = append(cals, str)
 			pause = true
 		} else {

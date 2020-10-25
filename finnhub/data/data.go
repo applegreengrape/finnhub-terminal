@@ -40,3 +40,31 @@ type EarningsCalendarStruct struct {
 		Year            int     `json:"year"`
 	} `json:"earningsCalendar"`
 }
+
+// NewsSentiment .. 
+type NewsSentiment struct {
+	Buzz struct {
+		ArticlesInLastWeek int     `json:"articlesInLastWeek"`
+		Buzz               float64 `json:"buzz"`
+		WeeklyAverage      int     `json:"weeklyAverage"`
+	} `json:"buzz"`
+	CompanyNewsScore            float64 `json:"companyNewsScore"`
+	SectorAverageBullishPercent float64 `json:"sectorAverageBullishPercent"`
+	SectorAverageNewsScore      float64 `json:"sectorAverageNewsScore"`
+	Sentiment                   struct {
+		BearishPercent float64 `json:"bearishPercent"`
+		BullishPercent float64 `json:"bullishPercent"`
+	} `json:"sentiment"`
+	Symbol string `json:"symbol"`
+}
+
+// Trend ..
+type Trend []struct {
+	Buy        int    `json:"buy"`
+	Hold       int    `json:"hold"`
+	Period     string `json:"period"`
+	Sell       int    `json:"sell"`
+	StrongBuy  int    `json:"strongBuy"`
+	StrongSell int    `json:"strongSell"`
+	Symbol     string `json:"symbol"`
+}

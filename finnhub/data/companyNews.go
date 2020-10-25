@@ -30,7 +30,7 @@ func CompanyNews() (companyNewsList []string, pause bool, e error) {
 		json.NewDecoder(res.Body).Decode(&companynews)
 
 		if len(companynews) == 0 {
-			str := fmt.Sprintf("🈳  no company news for %s yet.\n\n", s)
+			str := fmt.Sprintf("🈳 no company news for %s yet.\n\n", s)
 			companyNewsList = append(companyNewsList, str)
 			pause = true
 

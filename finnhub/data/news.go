@@ -28,7 +28,7 @@ func MarketNews() (mktNewsList []string, pause bool, e error) {
 	json.NewDecoder(res.Body).Decode(&mktnews)
 
 	if len(mktnews) == 0 {
-		str := "💔 no market news for yet.\n"
+		str := "🈳 no market news for yet.\n"
 		mktNewsList = append(mktNewsList, str)
 		pause = true
 	} else {

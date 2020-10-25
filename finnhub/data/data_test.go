@@ -96,3 +96,21 @@ func TestExportAllBFs(t *testing.T) {
 		triggers <- true
 	}
 }
+
+func TestGetNewsSentiment(t *testing.T) {
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+
+	tar, p, err := GetNewsSentiment()
+	if err == nil {
+		fmt.Println(tar, p)
+	}
+}
+
+func TestGetTrend(t *testing.T) {
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+
+	tar, p, err := GetTrend()
+	if err == nil {
+		fmt.Println(tar, p)
+	}
+}
