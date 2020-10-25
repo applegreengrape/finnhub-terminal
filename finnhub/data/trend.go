@@ -31,7 +31,7 @@ func GetTrend() (target []int, peers []int, e error) {
 		json.NewDecoder(res.Body).Decode(&trend)
 
 		if s == cfg.Stocks[0] {
-			target = []int{trend[0].Buy, trend[0].Hold, trend[0].Sell, trend[0].StrongBuy, trend[0].StrongSell}
+			target = []int{trend[0].StrongBuy, trend[0].Buy, trend[0].Hold, trend[0].Sell, trend[0].StrongSell}
 		}else{
 			b += trend[0].Buy
 			h += trend[0].Hold
@@ -42,7 +42,7 @@ func GetTrend() (target []int, peers []int, e error) {
 	}
 	
 	n := len(cfg.Stocks)-1
-	peers = []int{b/n, h/n, sell/n, sb/n, ss/n}
+	peers = []int{sb/n, b/n, h/n, sell/n, ss/n}
 	
 	return target, peers, nil
 }
