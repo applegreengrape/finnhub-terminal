@@ -1,7 +1,6 @@
 github.com/DATA-DOG/go-sqlmock v1.3.3/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
-github.com/applegreengrape/finnhub-terminal v0.0.0-20201025122219-d1240ab44b2d h1:9csoHCwOR1L8fPS6jpxJ9OHZALvngGuh68XRHI0gxqY=
-github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201024163350-5677cafac460 h1:vCysd8IMAXe1HC/CaJrd/6me5/nF5uHVsen6wTETVGg=
-github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201024163350-5677cafac460/go.mod h1:3GdYT6fxibqFwYgy0ocxGyjNpFWYJXTMSS8+ReR0SFE=
+github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201025122219-d1240ab44b2d h1:l67hmos/AWYIV2XSRuReDCA+TeqV//yOrY8ED+4/e9A=
+github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201025122219-d1240ab44b2d/go.mod h1:3GdYT6fxibqFwYgy0ocxGyjNpFWYJXTMSS8+ReR0SFE=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025122219-d1240ab44b2d h1:h6FfDpva4hfhWIEcmZdt2YVL57IAGi/UWS2fPXEV9sI=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025122219-d1240ab44b2d/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
 github.com/asaskevich/govalidator v0.0.0-20190424111038-f61b66f89f4a/go.mod h1:lB+ZfQJz7igIIfQNfa7Ml4HSf2uFQQRzpGGRXenZAgY=
