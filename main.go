@@ -176,7 +176,7 @@ func main() {
 										container.PlaceWidget(basicFinancials),
 									),
 									container.Bottom(
-										//container.Border(linestyle.Light), //"download as csv button"
+										container.Border(linestyle.Light), //"download as csv button"
 									),
 									container.SplitPercent(95),
 								),
@@ -188,7 +188,7 @@ func main() {
 										container.BorderTitle("🗂️ financials as reported by finnhub.io "),
 									),
 									container.Bottom(
-										//container.Border(linestyle.Light),//"download as csv button"
+										container.Border(linestyle.Light),//"download as csv button"
 									),
 									container.SplitPercent(95),
 								),
