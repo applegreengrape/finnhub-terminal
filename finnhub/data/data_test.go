@@ -84,3 +84,16 @@ func TestGetFinancialReports(t *testing.T) {
 	table.Render()
 	fmt.Println(tableString.String())
 }
+
+
+func TestExportAllBasicFinancials(t *testing.T) {
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+
+	ExportAllBasicFinancials()
+}
+
+func TestExportAllFinancialReports(t *testing.T) {
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+
+	ExportAllFinancialReports()
+}
