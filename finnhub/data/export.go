@@ -12,13 +12,12 @@ import (
 )
 
 // ExportAllBasicFinancials ..
-func ExportAllBasicFinancials() error {
+func ExportAllBasicFinancials() {
 	cfg := finnhub.NewSettingFromConfig()
 
 	db, err := sql.Open("sqlite3", dbPath)
 	if err != nil {
 		log.Fatal(err)
-		return err
 	}
 	defer db.Close()
 
@@ -29,19 +28,16 @@ func ExportAllBasicFinancials() error {
 		defer w.Flush()
 		if err != nil {
 			log.Fatal(err)
-			return err
 		}
 		err = w.Write([]string{"metric", "value"})
 		if err != nil {
 			log.Fatal(err)
-			return err
 		}
 
 		sqlQuery := fmt.Sprintf("SELECT * from %s ORDER by %s.metric;", s, s)
 		rows, err := db.Query(sqlQuery)
 		if err != nil {
 			log.Fatal(err)
-			return err
 		}
 		defer rows.Close()
 		for rows.Next() {
@@ -50,29 +46,24 @@ func ExportAllBasicFinancials() error {
 			err = rows.Scan(&m, &v)
 			if err != nil {
 				log.Fatal(err)
-				return err
 			}
 			err := w.Write([]string{m, v})
 			if err != nil {
 				log.Fatal(err)
-				return err
 			}
 		}
 
 	}
 
-	return nil
-
 }
 
 // ExportAllFinancialReports ..
-func ExportAllFinancialReports() error {
+func ExportAllFinancialReports()  {
 	cfg := finnhub.NewSettingFromConfig()
 
 	db2, err := sql.Open("sqlite3", dbPath2)
 	if err != nil {
 		log.Fatal(err)
-		return err
 	}
 	defer db2.Close()
 
@@ -83,19 +74,16 @@ func ExportAllFinancialReports() error {
 		defer w.Flush()
 		if err != nil {
 			log.Fatal(err)
-			return err
 		}
 		err = w.Write([]string{"filedDate", "type", "concept", "label", "value", "unit"})
 		if err != nil {
 			log.Fatal(err)
-			return err
 		}
 
 		sqlQuery2 := fmt.Sprintf("select filedDate, type, concept, label, value, unit from %s order by filedDate DESC;", s)
 		rows, err := db2.Query(sqlQuery2)
 		if err != nil {
 			log.Fatal(err)
-			return err
 		}
 		defer rows.Close()
 		for rows.Next() {
@@ -112,11 +100,8 @@ func ExportAllFinancialReports() error {
 			err := w.Write([]string{d, t, c, l, v, u})
 			if err != nil {
 				log.Fatal(err)
-				return err
 			}
 		}
 
 	}
-
-	return nil
 }

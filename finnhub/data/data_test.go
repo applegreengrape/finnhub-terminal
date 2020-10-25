@@ -89,17 +89,12 @@ func TestGetFinancialReports(t *testing.T) {
 func TestExportAllBasicFinancials(t *testing.T) {
 	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 
-	err:= ExportAllBasicFinancials()
-	if err != nil{
-		fmt.Println(err)
-	}
+	ExportAllBasicFinancials()
+
 }
 
 func TestExportAllFinancialReports(t *testing.T) {
 	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 
-	err:= ExportAllFinancialReports()
-	if err != nil{
-		fmt.Println(err)
-	}
+	ExportAllFinancialReports()
 }
