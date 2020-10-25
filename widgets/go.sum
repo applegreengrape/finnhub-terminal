@@ -8,6 +8,8 @@ github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025131531-78f16264
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025131531-78f16264fefe/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025175532-be615b66e2de h1:b4nVMxzX5Or/D9MVhSwDfNZoKMu1Xug22MJQDPxE9uQ=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025175532-be615b66e2de/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
+github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025202217-a1bbe6ebf492 h1:+/Y8bBIGrXZVG4RULhpYxdFk0UxzIH0P4JnS7VaIxtU=
+github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025202217-a1bbe6ebf492/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
 github.com/asaskevich/govalidator v0.0.0-20190424111038-f61b66f89f4a/go.mod h1:lB+ZfQJz7igIIfQNfa7Ml4HSf2uFQQRzpGGRXenZAgY=
 github.com/bradfitz/iter v0.0.0-20191230175014-e8f45d346db8/go.mod h1:spo1JLcs67NmW1aVLEgtA8Yy1elc+X8y5SRW1sFW4Og=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
