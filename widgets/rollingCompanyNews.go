@@ -31,7 +31,7 @@ func RollingCompanyNews(ctx context.Context, t *text.Text) {
 				time.Sleep(finnhubPause)
 			}
 
-			time.Sleep(finnhubInterval)
+			time.Sleep(finnhubCN)
 
 		case <-ctx.Done():
 			return

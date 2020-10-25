@@ -17,9 +17,17 @@ const (
 )
 
 const (
+	finnhubCN = 30 * time.Second
+)
+
+const (
 	finnhubPause = 30 * time.Second
 )
 
 const (
 	finnhubFundamentalInterval = 1 * time.Hour
+)
+
+const (
+	finnhubSentimentInterval = 1 * time.Hour
 )
