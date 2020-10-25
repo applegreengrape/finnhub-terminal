@@ -70,10 +70,17 @@ func TestGetEarningsCals(t *testing.T) {
 
 func TestGetFinancialReports(t *testing.T) {
 	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
-	cfg := finnhub.NewSettingFromConfig()
-
-	err := loadAllFinancialReports(cfg)
+	data, err := GetFinancialReports()
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	tableString := &strings.Builder{}
+	table := tablewriter.NewWriter(tableString)
+	table.SetHeader([]string{"filedDate", "type", "concept", "label", "value", "unit"})
+	table.SetAlignment(tablewriter.ALIGN_LEFT)
+	table.SetAutoWrapText(true)
+	table.AppendBulk(data)
+	table.Render()
+	fmt.Println(tableString.String())
 }

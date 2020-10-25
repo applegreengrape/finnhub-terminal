@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-// GetEarningsCals..
+// GetEarningsCals ..
 func GetEarningsCals() (cals []string, pause bool, e error) {
 	cfg := finnhub.NewSettingFromConfig()
 	c := &client.Client{
