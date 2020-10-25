@@ -14,7 +14,7 @@ type Config struct {
 
 // NewSettingFromConfig - get the widgets setting from config.json
 func NewSettingFromConfig() *Config {
-	path, exists := os.LookupEnv("finnhub_terminal_config")
+	path, exists := os.LookupEnv("finnhub_config")
 	if !exists {
 		path = "config.json"
 	}

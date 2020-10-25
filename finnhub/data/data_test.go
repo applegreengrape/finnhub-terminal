@@ -11,7 +11,7 @@ import (
 )
 
 func TestCompanyNews(t *testing.T) {
-	os.Setenv("finnhub_terminal_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 
 	n, p, err := CompanyNews()
 	if err == nil {
@@ -23,7 +23,7 @@ func TestCompanyNews(t *testing.T) {
 }
 
 func TestMarketNews(t *testing.T) {
-	os.Setenv("finnhub_terminal_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 
 	n, p, err := MarketNews()
 	if err == nil {
@@ -32,7 +32,7 @@ func TestMarketNews(t *testing.T) {
 }
 
 func TestGetBasicFinancials(t *testing.T) {
-	os.Setenv("finnhub_terminal_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 	data, err := GetBasicFinancials()
 	if err != nil {
 		fmt.Println(err)
@@ -56,7 +56,7 @@ func TestGetBasicFinancials(t *testing.T) {
 }
 
 func TestGetEarningsCals(t *testing.T) {
-	os.Setenv("finnhub_terminal_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 
 	cals, p, err := GetEarningsCals()
 	if err == nil {
@@ -69,7 +69,7 @@ func TestGetEarningsCals(t *testing.T) {
 }
 
 func TestGetFinancialReports(t *testing.T) {
-	os.Setenv("finnhub_terminal_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
+	os.Setenv("finnhub_config", "/Users/pingzhouliu/Documents/playground/finnhub-terminal/config.json")
 	cfg := finnhub.NewSettingFromConfig()
 
 	err := loadAllFinancialReports(cfg)

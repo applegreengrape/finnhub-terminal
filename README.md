@@ -2,6 +2,6 @@
 finnhub-terminal 
 
 ```
-export finnhub_terminal_config=./config.json
+export finnhub_config=<your_config_path>
 go run main.go
 ```
