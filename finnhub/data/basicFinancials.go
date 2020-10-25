@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	dbPath = "./basicFinnsTmp.db"
+	dbPath = "./basicFinancials.db"
 )
 
 //GetBasicFinancials ..
