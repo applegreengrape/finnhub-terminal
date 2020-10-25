@@ -3,20 +3,25 @@ package main
 import (
 	"context"
 	"fmt"
-	"time"
 	"log"
+	"time"
 
-	"github.com/applegreengrape/finnhub-terminal/widgets"
-	"github.com/applegreengrape/finnhub-terminal/yahoo"
 	"github.com/mum4k/termdash"
+	"github.com/mum4k/termdash/align"
 	"github.com/mum4k/termdash/cell"
 	"github.com/mum4k/termdash/container"
 	"github.com/mum4k/termdash/linestyle"
 	"github.com/mum4k/termdash/terminal/termbox"
 	"github.com/mum4k/termdash/terminal/terminalapi"
+	"github.com/mum4k/termdash/widgets/button"
 	"github.com/mum4k/termdash/widgets/linechart"
 	"github.com/mum4k/termdash/widgets/sparkline"
 	"github.com/mum4k/termdash/widgets/text"
+	"github.com/mum4k/termdash/widgets/barchart"
+
+	"github.com/applegreengrape/finnhub-terminal/finnhub/data"
+	"github.com/applegreengrape/finnhub-terminal/widgets"
+	"github.com/applegreengrape/finnhub-terminal/yahoo"
 )
 
 func main() {
@@ -96,6 +101,78 @@ func main() {
 	}
 	go widgets.UpdateBasicFinancials(ctx, basicFinancials)
 
+	// export all basic financials to csv button
+	triggers := make(chan bool)
+	go data.ExportAllBFs(triggers)
+	export1, err := button.New(
+		"Export all to csv",
+		func() error {
+			triggers <- true
+			return nil
+		},
+		button.GlobalKey('e'),
+		button.FillColor(cell.ColorNumber(220)),
+		button.WidthFor("Export all to csv"),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// export all financial reports to csv button
+	triggers2 := make(chan bool)
+	go data.ExportAllFRs(triggers2)
+	export2, err := button.New(
+		"Export all to csv",
+		func() error {
+			triggers2 <- true
+			return nil
+		},
+		button.GlobalKey('e'),
+		button.FillColor(cell.ColorNumber(220)),
+		button.WidthFor("Export all to csv"),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// update financial reports
+	financialReports, err := text.New()
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.UpdateFinancialReports(ctx, financialReports)
+	
+
+	// target bar chart 
+	bcTarget, err := barchart.New(
+		barchart.BarColors([]cell.Color{
+			cell.ColorGreen,
+			cell.ColorGreen,
+			cell.ColorYellow,
+			cell.ColorRed,
+			cell.ColorRed,
+		}),
+		barchart.ValueColors([]cell.Color{
+			cell.ColorBlack,
+			cell.ColorBlack,
+			cell.ColorBlack,
+			cell.ColorBlack,
+			cell.ColorBlack,
+		}),
+		barchart.ShowValues(),
+		barchart.BarWidth(8),
+		barchart.Labels([]string{
+			"🐮🐮 strong buy",
+			"🐮 buy",
+			"hold",
+			"🐻 sell",
+			"🐻🐻 strong sell",
+		}),
+	)
+	if err != nil {
+		panic(err)
+	}
+	go widgets.UpdateTrendBarChart(ctx, bcTarget, "target")
 
 	// container outlay
 	c, err := container.New(
@@ -176,21 +253,26 @@ func main() {
 										container.PlaceWidget(basicFinancials),
 									),
 									container.Bottom(
-										container.Border(linestyle.Light), //"download as csv button"
+										//container.Border(linestyle.Light), //"download as csv button"
+										container.PlaceWidget(export1),
+										container.AlignHorizontal(align.HorizontalRight),
 									),
-									container.SplitPercent(95),
+									container.SplitPercent(85),
 								),
 							),
 							container.Bottom(
 								container.SplitHorizontal(
 									container.Top(
 										container.Border(linestyle.Light),
-										container.BorderTitle("🗂️ financials as reported by finnhub.io "),
+										container.BorderTitle(fmt.Sprintf("🗂️ [%s] financials as reported by finnhub.io ", cfg.Stocks[0])),
+										container.PlaceWidget(financialReports),
 									),
 									container.Bottom(
-										container.Border(linestyle.Light),//"download as csv button"
+										//container.Border(linestyle.Light), //"download as csv button"
+										container.PlaceWidget(export2),
+										container.AlignHorizontal(align.HorizontalRight),
 									),
-									container.SplitPercent(95),
+									container.SplitPercent(85),
 								),
 							),
 						),
@@ -200,14 +282,28 @@ func main() {
 						container.BorderTitle("🗂️ stock estimates by finnhub.io "),
 						container.SplitVertical(
 							container.Left(
-								//container.Border(linestyle.Light),
+								container.SplitVertical(
+									container.Left(
+										container.Border(linestyle.Light),
+									),
+									container.Right(
+										container.Border(linestyle.Light),
+									),
+								),
 							),
 							container.Right(
-								//container.Border(linestyle.Light),
+								container.SplitVertical(
+									container.Left(
+										container.Border(linestyle.Light),
+									),
+									container.Right(
+										container.Border(linestyle.Light),
+									),
+								),
 							),
 						),
 					),
-					container.SplitPercent(70),
+					container.SplitPercent(75),
 				),
 			),
 			container.SplitPercent(35),
