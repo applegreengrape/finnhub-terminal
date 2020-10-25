@@ -11,13 +11,13 @@ import (
 
 // RollingNews ..
 func RollingNews(ctx context.Context, t *text.Text) {
-	ticker := time.NewTicker(newsInterval)
+	ticker := time.NewTicker(finnhubInit)
 	defer ticker.Stop()
 
 	for {
 		select {
 		case <-ticker.C:
-			news, err := data.MarketNews()
+			news, pause, err := data.MarketNews()
 			if err != nil {
 				panic(err)
 			}
@@ -26,6 +26,12 @@ func RollingNews(ctx context.Context, t *text.Text) {
 					panic(err)
 				}
 			}
+			
+			if pause {
+				time.Sleep(finnhubPause)
+			}
+
+			time.Sleep(finnhubInterval)
 
 		case <-ctx.Done():
 			return

@@ -9,9 +9,17 @@ const (
 )
 
 const (
-	interval = 1 * time.Second
+	finnhubInit = 1 * time.Second
 )
 
 const (
-	newsInterval = 5 * time.Second
+	finnhubInterval = 10 * time.Second
+)
+
+const (
+	finnhubPause = 30 * time.Second
+)
+
+const (
+	finnhubFundamentalInterval = 1 * time.Hour
 )

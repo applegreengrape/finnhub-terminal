@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"time"
+	"log"
 
 	"github.com/applegreengrape/finnhub-terminal/widgets"
 	"github.com/applegreengrape/finnhub-terminal/yahoo"
@@ -22,7 +23,7 @@ func main() {
 	// new terminal
 	t, err := termbox.New()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	defer t.Close()
 
@@ -32,30 +33,16 @@ func main() {
 	// update time
 	timeNow, err := text.New()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	go widgets.UpdateTime(ctx, timeNow)
 
 	// update stocks
 	stk, err := text.New()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	go widgets.UpdateStockPrice(ctx, stk)
-
-	// RollingMtkNews Widgest
-	news, err := text.New(text.RollContent(), text.WrapAtWords())
-	if err != nil {
-		panic(err)
-	}
-	go widgets.RollingNews(ctx, news)
-
-	//RollingCompanyNews Widgest
-	companyNewsRoll, err := text.New(text.RollContent(), text.WrapAtWords())
-	if err != nil {
-		panic(err)
-	}
-	go widgets.RollingCompanyNews(ctx, companyNewsRoll)
 
 	// stock line chart
 	cfg := yahoo.NewSettingFromConfig()
@@ -67,7 +54,7 @@ func main() {
 		linechart.XLabelCellOpts(cell.FgColor(cell.ColorCyan)),
 	)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	go widgets.StockLineChart(ctx, lc, redrawInterval/3)
 
@@ -77,9 +64,38 @@ func main() {
 		sparkline.Color(cell.ColorYellow),
 	)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	go widgets.VolumeSparkChart(ctx, volchart, redrawInterval)
+
+	//RollingEarningsCalendar Widgest
+	earningCals, err := text.New(text.RollContent(), text.WrapAtWords())
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.RollingEarningsCalendar(ctx, earningCals)
+
+	// RollingMtkNews Widgest
+	news, err := text.New(text.RollContent(), text.WrapAtWords())
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.RollingNews(ctx, news)
+
+	//RollingCompanyNews Widgest
+	companyNewsRoll, err := text.New(text.RollContent(), text.WrapAtWords())
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.RollingCompanyNews(ctx, companyNewsRoll)
+
+	// update basic financials
+	basicFinancials, err := text.New()
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.UpdateBasicFinancials(ctx, basicFinancials)
+
 
 	// container outlay
 	c, err := container.New(
@@ -109,7 +125,6 @@ func main() {
 												container.PlaceWidget(lc),
 											),
 											container.Bottom(
-												//container.BorderTitle(fmt.Sprintf("%s stock price by yahoo finance", cfg.Stocks[0])),
 												container.PlaceWidget(volchart),
 											),
 											container.SplitPercent(70),
@@ -125,7 +140,8 @@ func main() {
 						container.SplitHorizontal(
 							container.Top(
 								container.Border(linestyle.Light),
-								container.BorderTitle("earning calendars"),
+								container.BorderTitle("📅 earning calendars by finnhub.io "),
+								container.PlaceWidget(earningCals),
 							),
 							container.Bottom(
 								container.SplitHorizontal(
@@ -148,13 +164,57 @@ func main() {
 				),
 			),
 			container.Right(
-				container.Border(linestyle.Light),
+				container.SplitHorizontal(
+					container.Top(
+						//container.Border(linestyle.Light),
+						container.SplitHorizontal(
+							container.Top(
+								container.SplitHorizontal(
+									container.Top(
+										container.Border(linestyle.Light),
+										container.BorderTitle("📂 basic financials by finnhub.io "),
+										container.PlaceWidget(basicFinancials),
+									),
+									container.Bottom(
+										container.Border(linestyle.Light), //"download as csv button"
+									),
+									container.SplitPercent(95),
+								),
+							),
+							container.Bottom(
+								container.SplitHorizontal(
+									container.Top(
+										container.Border(linestyle.Light),
+										container.BorderTitle("🗂️ financials as reported by finnhub.io "),
+									),
+									container.Bottom(
+										container.Border(linestyle.Light),//"download as csv button"
+									),
+									container.SplitPercent(95),
+								),
+							),
+						),
+					),
+					container.Bottom(
+						container.Border(linestyle.Light),
+						container.BorderTitle("🗂️ stock estimates by finnhub.io "),
+						container.SplitVertical(
+							container.Left(
+								//container.Border(linestyle.Light),
+							),
+							container.Right(
+								//container.Border(linestyle.Light),
+							),
+						),
+					),
+					container.SplitPercent(70),
+				),
 			),
 			container.SplitPercent(35),
 		),
 	)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	// define the quitter
@@ -165,6 +225,6 @@ func main() {
 	}
 
 	if err := termdash.Run(ctx, t, c, termdash.KeyboardSubscriber(quitter)); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 }

@@ -11,9 +11,7 @@ import (
 )
 
 // CompanyNews ..
-func CompanyNews() ([]string, error) {
-	companyNewsList := []string{}
-
+func CompanyNews() (companyNewsList []string, pause bool, e error) {
 	cfg := finnhub.NewSettingFromConfig()
 	c := &client.Client{
 		APIKey: cfg.APIKey,
@@ -26,15 +24,18 @@ func CompanyNews() ([]string, error) {
 		p.Add("symbol", s)
 		res, err := c.FinnhubClient(finnhub.Version+path, p)
 		if err != nil {
-			return nil, err
+			return nil, true, err
 		}
 		var companynews CompanyNewsStruct
 		json.NewDecoder(res.Body).Decode(&companynews)
 
 		if len(companynews) == 0 {
-			str := fmt.Sprintf("🙊 no company news for %s yet. \n\n", s)
+			str := fmt.Sprintf("🈳  no company news for %s yet.\n\n", s)
 			companyNewsList = append(companyNewsList, str)
+			pause = true
+
 		} else {
+			pause = false
 			for _, n := range companynews {
 				meta := fmt.Sprintf("📝 [%s] by %s (%s)\n", n.Related, n.Source, time.Unix(n.Datetime, 0).Format(time.RFC822Z))
 				companyNewsList = append(companyNewsList, meta)
@@ -53,11 +54,9 @@ func CompanyNews() ([]string, error) {
 					companyNewsList = append(companyNewsList, summary)
 				}
 				companyNewsList = append(companyNewsList, "\n")
-
-				time.Sleep(1 * time.Second)
 			}
 		}
 	}
 
-	return companyNewsList, nil
+	return companyNewsList, pause, nil
 }
