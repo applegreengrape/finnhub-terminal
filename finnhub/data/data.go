@@ -30,12 +30,12 @@ type CompanyNewsStruct []struct {
 type EarningsCalendarStruct struct {
 	EarningsCalendar []struct {
 		Date            string  `json:"date"`
-		EpsActual       float64     `json:"epsActual"`
+		EpsActual       float64 `json:"epsActual"`
 		EpsEstimate     float64 `json:"epsEstimate"`
 		Hour            string  `json:"hour"`
 		Quarter         int     `json:"quarter"`
-		RevenueActual   float64     `json:"revenueActual"`
-		RevenueEstimate float64   `json:"revenueEstimate"`
+		RevenueActual   float64 `json:"revenueActual"`
+		RevenueEstimate float64 `json:"revenueEstimate"`
 		Symbol          string  `json:"symbol"`
 		Year            int     `json:"year"`
 	} `json:"earningsCalendar"`

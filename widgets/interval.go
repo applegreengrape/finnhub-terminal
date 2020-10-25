@@ -19,3 +19,7 @@ const (
 const (
 	finnhubPause = 30 * time.Second
 )
+
+const (
+	finnhubFundamentalInterval = 1 * time.Hour
+)

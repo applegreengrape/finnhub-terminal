@@ -44,27 +44,6 @@ func main() {
 	}
 	go widgets.UpdateStockPrice(ctx, stk)
 
-	// RollingMtkNews Widgest
-	news, err := text.New(text.RollContent(), text.WrapAtWords())
-	if err != nil {
-		log.Fatal(err)
-	}
-	go widgets.RollingNews(ctx, news)
-
-	//RollingCompanyNews Widgest
-	companyNewsRoll, err := text.New(text.RollContent(), text.WrapAtWords())
-	if err != nil {
-		log.Fatal(err)
-	}
-	go widgets.RollingCompanyNews(ctx, companyNewsRoll)
-
-	//RollingEarningsCalendar Widgest
-	earningCals, err := text.New(text.RollContent(), text.WrapAtWords())
-	if err != nil {
-		log.Fatal(err)
-	}
-	go widgets.RollingEarningsCalendar(ctx, earningCals)
-
 	// stock line chart
 	cfg := yahoo.NewSettingFromConfig()
 	const redrawInterval = 250 * time.Millisecond
@@ -88,6 +67,35 @@ func main() {
 		log.Fatal(err)
 	}
 	go widgets.VolumeSparkChart(ctx, volchart, redrawInterval)
+
+	//RollingEarningsCalendar Widgest
+	earningCals, err := text.New(text.RollContent(), text.WrapAtWords())
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.RollingEarningsCalendar(ctx, earningCals)
+
+	// RollingMtkNews Widgest
+	news, err := text.New(text.RollContent(), text.WrapAtWords())
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.RollingNews(ctx, news)
+
+	//RollingCompanyNews Widgest
+	companyNewsRoll, err := text.New(text.RollContent(), text.WrapAtWords())
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.RollingCompanyNews(ctx, companyNewsRoll)
+
+	// update basic financials
+	basicFinancials, err := text.New()
+	if err != nil {
+		log.Fatal(err)
+	}
+	go widgets.UpdateBasicFinancials(ctx, basicFinancials)
+
 
 	// container outlay
 	c, err := container.New(
@@ -159,12 +167,13 @@ func main() {
 				container.SplitHorizontal(
 					container.Top(
 						//container.Border(linestyle.Light),
-						container.SplitVertical(
-							container.Left(
+						container.SplitHorizontal(
+							container.Top(
 								container.SplitHorizontal(
 									container.Top(
 										container.Border(linestyle.Light),
 										container.BorderTitle("📂 basic financials by finnhub.io "),
+										container.PlaceWidget(basicFinancials),
 									),
 									container.Bottom(
 										//container.Border(linestyle.Light), //"download as csv button"
@@ -172,7 +181,7 @@ func main() {
 									container.SplitPercent(95),
 								),
 							),
-							container.Right(
+							container.Bottom(
 								container.SplitHorizontal(
 									container.Top(
 										container.Border(linestyle.Light),

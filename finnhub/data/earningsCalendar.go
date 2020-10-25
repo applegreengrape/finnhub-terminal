@@ -9,8 +9,8 @@ import (
 	"time"
 )
 
-// GetEarningsCals.. 
-func GetEarningsCals() (cals []string, pause bool, e error){
+// GetEarningsCals..
+func GetEarningsCals() (cals []string, pause bool, e error) {
 	cfg := finnhub.NewSettingFromConfig()
 	c := &client.Client{
 		APIKey: cfg.APIKey,
@@ -24,7 +24,7 @@ func GetEarningsCals() (cals []string, pause bool, e error){
 	end := time.Date(year, month+1, 0, 0, 0, 0, 0, now.Location())
 	to := fmt.Sprintf("%s", end.Format("2020-01-02"))
 
-	for _,s := range cfg.Stocks {
+	for _, s := range cfg.Stocks {
 		p := url.Values{}
 		p.Add("from", from)
 		p.Add("to", to)
@@ -40,7 +40,7 @@ func GetEarningsCals() (cals []string, pause bool, e error){
 			str := fmt.Sprintf(" 🤷‍♀️ no earning calendar info for %s from %s to %s. \n\n", s, from, to)
 			cals = append(cals, str)
 			pause = true
-		}else{
+		} else {
 			pause = false
 			cal := earningcals.EarningsCalendar[0]
 			meta := fmt.Sprintf("⏰ %s Q%d [%s]\n", cal.Date, cal.Quarter, cal.Symbol)
@@ -50,5 +50,5 @@ func GetEarningsCals() (cals []string, pause bool, e error){
 		}
 	}
 
-	return cals, pause, nil 
+	return cals, pause, nil
 }
