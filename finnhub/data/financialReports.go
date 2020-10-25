@@ -57,11 +57,11 @@ func GetFinancialReports() (result [][]string, e error) {
 		if len(d) > 10 {
 			d = d[0:10]
 		}
-		if len(c) > 15 {
-			c = c[0:15]+"..."
+		if len(c) > 20 {
+			c = c[0:20]+"..."
 		}
-		if len(l) > 15 {
-			l = l[0:15]+"..."
+		if len(l) > 20 {
+			l = l[0:20]+"..."
 		}
 		r = append(r, d, t, c, l, v, u)
 		result = append(result, r)
