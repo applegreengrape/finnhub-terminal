@@ -7,9 +7,10 @@ config.json:
 {
     "apiKey": "",
     "stocks":[
-        "FSLY",
-        "NET", 
-        "FFIV"
+        "BABA",
+        "AMZN",
+        "GOOGL",
+        "MSFT"
     ]
 }
 ```
