@@ -2,16 +2,16 @@
 class FinnhubTerminal < Formula
   desc "terminal dashboard for finnhub.io"
   homepage "https://github.com/applegreengrape/finnhub-terminal"
-  version "0.1.9"
+  version "0.2.0"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/applegreengrape/finnhub-terminal/releases/download/v0.1.9/finnhub-terminal_0.1.9_darwin_amd64.zip"
-    sha256 "2a6c9346ec4557d17ddd9898c24884800b6157a0941c0d1b411341352b779164"
+    url "https://github.com/applegreengrape/finnhub-terminal/releases/download/v0.2.0/finnhub-terminal_0.2.0_darwin_amd64.zip"
+    sha256 "322e8a42f5e2b43960dab9e1a058e85260e6cf4d5b1fb3eeb87906a50b059598"
   elsif OS.linux?
   end
 
   def install
-    bin.install "golang-cross"
+    bin.install "fterm"
   end
 end
