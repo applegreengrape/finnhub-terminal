@@ -26,14 +26,12 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
-      
-brew:
-  github:
-    owner: applegreengrape
-    name: homebrew-tap
-  commit_author:
-    name: goreleaserbot
-    email: goreleaser@carlosbecker.com
-  folder: Formula
-release:
-  prerelease: true
+
+# Same repo deployment
+brews:
+  - github:
+        owner: applegreengrape
+        name: finnhub-terminal
+    folder: Formula
+    homepage: https://github.com/applegreengrape/finnhub-terminal
+    description: terminal dashboard for finnhub.io
