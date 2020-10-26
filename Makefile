@@ -1,5 +1,5 @@
 PACKAGE_NAME          := github.com/applegreengrape/finnhub-terminal
-GOLANG_CROSS_VERSION  ?= v0.1.9
+GOLANG_CROSS_VERSION  ?= v1.15.2
 
 SYSROOT_DIR     ?= sysroots
 SYSROOT_ARCHIVE ?= sysroots.tar.bz2
