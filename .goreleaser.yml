@@ -31,7 +31,7 @@ changelog:
 brews:
   - github:
         owner: applegreengrape
-        name: homebrew-tap
+        name: finnhub-terminal
     folder: Formula
     homepage: https://github.com/applegreengrape/finnhub-terminal
     description: terminal dashboard for finnhub.io
