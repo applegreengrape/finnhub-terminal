@@ -1,7 +1,7 @@
 builds:
   - id: darwin-amd64
     main: ./
-    binary: golang-cross
+    binary: fterm
     goos:
       - darwin
     goarch:
@@ -17,7 +17,7 @@ builds:
       - -s -w -X main.version={{.Version}}
   - id: linux-armhf
     main: ./
-    binary: golang-cross
+    binary: fterm
     goos:
       - linux
     goarch:
