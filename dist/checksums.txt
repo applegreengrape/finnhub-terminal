@@ -1,5 +1,0 @@
-756004b4bb162998ee43cba289ff877877bda1f933ac9c42d1ca2e782ebad436  finnhub-terminal_0.1.0_Linux_i386.tar.gz
-82b4b62e302a4e617d219c4efae338c5928a0984486ee70524f76f22a4e79766  finnhub-terminal_0.1.0_Darwin_x86_64.tar.gz
-b979f99e9e090756a04d6c476ac14968ba260e0d6128c301321294be949cb36f  finnhub-terminal_0.1.0_Linux_x86_64.tar.gz
-bfc4bb92209af62265ddbf78b2f0ff98a9a4ca25dee08c0ee4881ed94d88a578  finnhub-terminal_0.1.0_Windows_x86_64.tar.gz
-fe8d4c0b0c11358756bf37f522ed5cf2ece2ac71ccb5429301bc04d671c074af  finnhub-terminal_0.1.0_Windows_i386.tar.gz
