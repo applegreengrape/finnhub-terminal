@@ -1,6 +1,6 @@
 # finnhub-terminal
 
-It is all started from a feature request from [wtfutil/wtf](https://github.com/wtfutil/wtf/issues/930). I simply found it's cool to draw dashboards just with terminals. So I decided to take it further, explore other terminal ui framework and built one for finnhub.io. That's where I found [termdash](https://github.com/mum4k/termdash).
+It is all started with a feature request from [wtfutil/wtf](https://github.com/wtfutil/wtf/issues/930). I simply found it's cool to draw dashboards just with terminals. So I decided to take it further, explore other terminal ui framework and built one for finnhub.io. That's where I found [termdash](https://github.com/mum4k/termdash).
 
 ![example view](./_img/pic1.png)
 
