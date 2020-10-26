@@ -2,16 +2,16 @@
 class FinnhubTerminal < Formula
   desc "terminal dashboard for finnhub.io"
   homepage "https://github.com/applegreengrape/finnhub-terminal"
-  version "0.1.9"
+  version "0.1.8"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/applegreengrape/finnhub-terminal/releases/download/v0.1.9/finnhub-terminal_0.1.9_Darwin_x86_64.tar.gz"
-    sha256 "d2883aa2997a409af588113ba66c31183716b2a2e40a6d72537f24691e7b4ab4"
+    url "https://github.com/applegreengrape/finnhub-terminal/releases/download/v0.1.8/finnhub-terminal_0.1.8_Darwin_x86_64.tar.gz"
+    sha256 "f4421c29d514c68dc3abe44aca30e374bb8892c16ceeb36ec43ada14e45a6831"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/applegreengrape/finnhub-terminal/releases/download/v0.1.9/finnhub-terminal_0.1.9_Linux_x86_64.tar.gz"
-      sha256 "21279b6d4950fc30f5ae2839f5b6671bd7eb3f1b038ae698dd3fce8ce776c3bf"
+      url "https://github.com/applegreengrape/finnhub-terminal/releases/download/v0.1.8/finnhub-terminal_0.1.8_Linux_x86_64.tar.gz"
+      sha256 "8be3fd3acbe4d00cd380dceadc7cd77e107806f503aa65336683255c1679f973"
     end
   end
 
