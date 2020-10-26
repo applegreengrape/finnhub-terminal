@@ -1,7 +1,15 @@
 github.com/DATA-DOG/go-sqlmock v1.3.3/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
+github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201026011118-28077744f0d2 h1:jafnMCoxQTJPODrY/KfEnTRIA7WNJggpNhuczc1XVRE=
+github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201026011118-28077744f0d2/go.mod h1:9HDXI7RT7BE0zFPtJJLkn7YO0pG2pzPmKkJ80OcJS2A=
+github.com/applegreengrape/finnhub-terminal/widgets v0.0.0-20201026011450-98c96d4e8f02 h1:q0VF8OM3g93gbklFVBbwJDdP9DSSxuTpZVcLOz8uGTw=
+github.com/applegreengrape/finnhub-terminal/widgets v0.0.0-20201026011450-98c96d4e8f02/go.mod h1:Qsd8hT4PmAYgszo2P2aOxxj5DEot0vspc/D6KWzBN4k=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025202217-a1bbe6ebf492/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025232649-188e4ef22e4d h1:fjMBTfWy7obqqKXibJpPYXPqjGK0j1CwUZxGIx0LcgU=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025232649-188e4ef22e4d/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
+github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201026010718-902cb93f827e h1:pZyGqwmB6hvFSw4U9FzhawaejQkSUrgX7bv4lI2Ot8Y=
+github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201026010718-902cb93f827e/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
+github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201026011450-98c96d4e8f02 h1:9J4YrV2aZ9tn9UIYEJJrE9fHgqSmpqdErCFlgqS+gTI=
+github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201026011450-98c96d4e8f02/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
 github.com/gdamore/encoding v1.0.0/go.mod h1:alR0ol34c49FCSBLjhosxzcPHQbf2trDkoo5dl+VrEg=
 github.com/gdamore/tcell v1.3.0/go.mod h1:Hjvr+Ofd+gLglo7RYKxxnzCBmev3BzsS67MebKS4zMM=
 github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0SNc=
