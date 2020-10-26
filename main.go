@@ -18,7 +18,8 @@ import (
 	"github.com/mum4k/termdash/widgets/sparkline"
 	"github.com/mum4k/termdash/widgets/text"
 	"github.com/mum4k/termdash/widgets/barchart"
-
+	"github.com/mum4k/termdash/widgets/donut"
+	
 	"github.com/applegreengrape/finnhub-terminal/finnhub/data"
 	"github.com/applegreengrape/finnhub-terminal/widgets"
 	"github.com/applegreengrape/finnhub-terminal/yahoo"
@@ -141,7 +142,26 @@ func main() {
 		log.Fatal(err)
 	}
 	go widgets.UpdateFinancialReports(ctx, financialReports)
-	
+
+	// target news sentiment donut
+	tnTrend, err := donut.New(
+		donut.CellOpts(cell.FgColor(cell.ColorGreen)),
+		donut.Label("🐮 bullish %", cell.FgColor(cell.ColorGreen)),
+	)
+	if err != nil {
+		panic(err)
+	}
+	go widgets.UpdateSentimentDonut(ctx, tnTrend, "target")
+
+	// peers news sentiment donut
+	pnTrend, err := donut.New(
+		donut.CellOpts(cell.FgColor(cell.ColorGreen)),
+		donut.Label("🐮 bullish %", cell.FgColor(cell.ColorGreen)),
+	)
+	if err != nil {
+		panic(err)
+	}
+	go widgets.UpdateSentimentDonut(ctx, pnTrend, "peers")
 
 	// target bar chart 
 	bcTarget, err := barchart.New(
@@ -153,26 +173,66 @@ func main() {
 			cell.ColorRed,
 		}),
 		barchart.ValueColors([]cell.Color{
-			cell.ColorBlack,
-			cell.ColorBlack,
-			cell.ColorBlack,
-			cell.ColorBlack,
-			cell.ColorBlack,
+			cell.ColorWhite,
+			cell.ColorWhite,
+			cell.ColorCyan,
+			cell.ColorWhite,
+			cell.ColorWhite,
 		}),
 		barchart.ShowValues(),
 		barchart.BarWidth(8),
 		barchart.Labels([]string{
-			"🐮🐮 strong buy",
-			"🐮 buy",
-			"hold",
-			"🐻 sell",
-			"🐻🐻 strong sell",
+			"🐮🐮",
+			"🐮 ",
+			"✋",
+			"🐻 ",
+			"🐻🐻",
 		}),
 	)
 	if err != nil {
 		panic(err)
 	}
 	go widgets.UpdateTrendBarChart(ctx, bcTarget, "target")
+
+	// peers bar chart 
+	bcPeers, err := barchart.New(
+		barchart.BarColors([]cell.Color{
+			cell.ColorGreen,
+			cell.ColorGreen,
+			cell.ColorYellow,
+			cell.ColorRed,
+			cell.ColorRed,
+		}),
+		barchart.ValueColors([]cell.Color{
+			cell.ColorWhite,
+			cell.ColorWhite,
+			cell.ColorCyan,
+			cell.ColorWhite,
+			cell.ColorWhite,
+		}),
+		barchart.ShowValues(),
+		barchart.BarWidth(8),
+		barchart.Labels([]string{
+			"🐮🐮",
+			"🐮 ",
+			"✋",
+			"🐻 ",
+			"🐻🐻",
+		}),
+	)
+	if err != nil {
+		panic(err)
+	}
+	go widgets.UpdateTrendBarChart(ctx, bcPeers, "peers")
+
+	notes, err := text.New()
+	if err != nil {
+		panic(err)
+	}
+	if err := notes.Write("Legend: 🐮🐮: strong buy, 🐮: buy, ✋: hold, 🐻: sell, 🐻 🐻 :strong sell "); err != nil {
+		panic(err)
+	}
+	
 
 	// container outlay
 	c, err := container.New(
@@ -285,28 +345,44 @@ func main() {
 								container.SplitVertical(
 									container.Left(
 										container.Border(linestyle.Light),
+										container.BorderTitle(fmt.Sprintf(" [%s] news sentiment", cfg.Stocks[0])),
+										container.PlaceWidget(tnTrend),
 									),
 									container.Right(
 										container.Border(linestyle.Light),
+										container.BorderTitle(" avg peers news sentiment"),
+										container.PlaceWidget(pnTrend),
 									),
 								),
 							),
 							container.Right(
-								container.SplitVertical(
-									container.Left(
-										container.Border(linestyle.Light),
+								container.SplitHorizontal(
+									container.Top(
+										container.SplitVertical(
+											container.Left(
+												container.Border(linestyle.Light),
+												container.BorderTitle(fmt.Sprintf(" [%s] latest analyst recommendation", cfg.Stocks[0])),
+												container.PlaceWidget(bcTarget),
+											),
+											container.Right(
+												container.Border(linestyle.Light),
+												container.BorderTitle(" avg peers latest analyst recommendation"),
+												container.PlaceWidget(bcPeers),
+											),
+										),
 									),
-									container.Right(
-										container.Border(linestyle.Light),
+									container.Bottom(
+										container.PlaceWidget(notes),
 									),
+									container.SplitPercent(95),
 								),
 							),
 						),
 					),
-					container.SplitPercent(75),
+					container.SplitPercent(80),
 				),
 			),
-			container.SplitPercent(35),
+			container.SplitPercent(30),
 		),
 	)
 	if err != nil {

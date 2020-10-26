@@ -11,7 +11,7 @@ import (
 
 // RollingCompanyNews ..
 func RollingCompanyNews(ctx context.Context, t *text.Text) {
-	ticker := time.NewTicker(finnhubInit)
+	ticker := time.NewTicker(3 * time.Second)
 	defer ticker.Stop()
 
 	for {

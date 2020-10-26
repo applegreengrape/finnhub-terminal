@@ -1,6 +1,4 @@
 github.com/DATA-DOG/go-sqlmock v1.3.3/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
-github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201025225122-fb2d186cbf69 h1:4eDnFR4oFuccc/pREAIn+IW1xyrqz0koDubx4kV5djk=
-github.com/applegreengrape/finnhub-terminal/finnhub v0.0.0-20201025225122-fb2d186cbf69/go.mod h1:9HDXI7RT7BE0zFPtJJLkn7YO0pG2pzPmKkJ80OcJS2A=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025202217-a1bbe6ebf492 h1:+/Y8bBIGrXZVG4RULhpYxdFk0UxzIH0P4JnS7VaIxtU=
 github.com/applegreengrape/finnhub-terminal/yahoo v0.0.0-20201025202217-a1bbe6ebf492/go.mod h1:b2mx3Kd6zcmHWRp/lpfgnPUiMBXhNnAjKAJmtzoPEH8=
 github.com/gdamore/encoding v1.0.0/go.mod h1:alR0ol34c49FCSBLjhosxzcPHQbf2trDkoo5dl+VrEg=

@@ -13,7 +13,11 @@ const (
 )
 
 const (
-	finnhubInterval = 10 * time.Second
+	finnhubInterval = 30 * time.Second
+)
+
+const (
+	finnhubEarningCals = 12 * time.Hour
 )
 
 const (
@@ -21,11 +25,11 @@ const (
 )
 
 const (
-	finnhubPause = 30 * time.Second
+	finnhubPause = 30 * time.Minute
 )
 
 const (
-	finnhubFundamentalInterval = 1 * time.Hour
+	finnhubFundamentalInterval = 12 * time.Hour
 )
 
 const (

@@ -13,7 +13,7 @@ import (
 
 // UpdateFinancialReports ..
 func UpdateFinancialReports(ctx context.Context, t *text.Text) {
-	ticker := time.NewTicker(finnhubInit)
+	ticker := time.NewTicker(2 * time.Second)
 	defer ticker.Stop()
 
 	for {

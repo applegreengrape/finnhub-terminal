@@ -31,7 +31,7 @@ func RollingEarningsCalendar(ctx context.Context, t *text.Text) {
 				time.Sleep(finnhubPause)
 			}
 
-			time.Sleep(finnhubInterval)
+			time.Sleep(finnhubEarningCals)
 
 		case <-ctx.Done():
 			return

@@ -10,9 +10,7 @@ import (
 
 // UpdateTrendBarChart ..
 func UpdateTrendBarChart(ctx context.Context, bc *barchart.BarChart, which string) {
-	const max = 5
-
-	ticker := time.NewTicker(finnhubInit)
+	ticker := time.NewTicker(2 * time.Second)
 	defer ticker.Stop()
 
 	for {
@@ -21,6 +19,26 @@ func UpdateTrendBarChart(ctx context.Context, bc *barchart.BarChart, which strin
 			target, peers, err := data.GetTrend()
 			if err != nil {
 				panic(err)
+			}
+			var mt int 
+			for _, t := range target {
+				if mt < t {
+					mt = t
+				}
+			}
+
+			var pt int 
+			for _, p := range peers {
+				if pt < p {
+					pt = p
+				}
+			}
+
+			var max int 
+			if mt > pt {
+				max = mt
+			}else{
+				max = pt
 			}
 			if which == "target" {
 				if err := bc.Values(target, max); err != nil {
