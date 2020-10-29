@@ -21,7 +21,7 @@ config.json:
 brew tap applegreengrape/finnhub-terminal https://github.com/applegreengrape/finnhub-terminal
 brew install finnhub-terminal
 
-config_path=./config.json fterm
+finnhub_config=./config.json fterm
 ```
 N.B. If you are using the free version of finnhub, you might get 429 too many requests error from finnhub.io when it come to a long stock lists (e.g. querying more than 10 stocks in one go).
 checkout finnhub's [rate-limit](https://finnhub.io/docs/api#rate-limit) for more information.
